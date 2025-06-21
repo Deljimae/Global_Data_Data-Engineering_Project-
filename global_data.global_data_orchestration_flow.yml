@@ -1,0 +1,48 @@
+id: global_data_flow
+namespace: global_data
+
+inputs:
+  - id: indicator
+    type: STRING
+    defaults: access_to_electricity.csv
+
+tasks:
+  - id: set_label
+    type: io.kestra.plugin.core.execution.Labels
+    labels:
+      file: "{{ inputs.indicator }}"
+
+  - id: download_github_csv
+    type: io.kestra.plugin.scripts.shell.Commands
+    outputFiles:
+      - "*.csv"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    commands:
+      - wget https://raw.githubusercontent.com/Deljimae/Global_Data_Data-Engineering_Project-/main/dataset/{{ inputs.indicator }} -O {{ inputs.indicator }}
+
+  - id: upload_to_s3
+    type: io.kestra.plugin.aws.s3.Upload
+    from: "{{ outputs.download_github_csv.outputFiles[inputs.indicator]}}"
+    key: "raw_data/{{ inputs.indicator }}"
+
+
+
+
+
+
+
+
+
+pluginDefaults:
+  - type: io.kestra.plugin.aws
+    values:
+      accessKeyId: "{{kv('ACCESS_KEY_ID')}}"
+      secretKeyId: "{{kv('SECRET_ACCESS_KEY')}}"
+      region: "{{kv('AWS_REGION')}}"
+      bucket: "{{kv('AWS_BUCKET_NAME')}}"
+
+
+
+    
+    
