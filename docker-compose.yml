@@ -28,10 +28,10 @@ services:
           storage:
               type: s3
               s3:
-                accessKey: "AKIAVGGDQ4CJSKLKLP43"
-                secretKey: "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"
-                region: "us-east-1"
-                bucket: "michykestra-bucket"
+                accessKey: "****"
+                secretKey: "****"
+                region: "****"
+                bucket: "****"
           queue:
             type: postgres
           tasks:
