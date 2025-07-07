@@ -1,0 +1,2 @@
+SELECT *
+FROM stg_kestradb__global_indicators_ext

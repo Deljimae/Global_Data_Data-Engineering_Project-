@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: fct_global_indicators
+    columns:
+      - name: country_code
+        tests:
+          - not_null

@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: kestradb              # What you use in source('kestradb', ...)
+    database: AwsDataCatalog    # This is the actual Athena catalog
+    schema: kestradb            # This is the actual Athena database
+    tables:
+      - name: global_indicators_ext
+
+models:
+  - name: stg_kestradb__global_indicators_ext
+    description: "Staging model for global indicators external table."
+    columns:
+      - name: country_code
+        description: "ISO country code"
+      - name: country_name
+        description: "Full country name"
+      - name: year
+        description: "Year of the indicator"
+      - name: value
+        description: "Recorded value for the indicator"
+  - name: dim_country
+    description: Dimension table for all valid countries
+    columns:
+      - name: country_code
+        description: ISO code or regional code
+      - name: country_name
+        description: Full name of the country
