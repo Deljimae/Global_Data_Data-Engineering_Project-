@@ -79,7 +79,7 @@ Before you connect Power BI to Athena, ensure you have the following:
 
 ---
 
-## 3. 🚪 Power BI Gateway Setup
+## 3. 🚪 Power BI Gateway Setup (Optional)
 
 To schedule data refresh:
 
