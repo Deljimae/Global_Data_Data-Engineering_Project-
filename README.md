@@ -65,5 +65,22 @@ Compare development progress across countries or regions
 
 Empower NGOs, researchers, and journalists with clean datasets
 
+
+## Data Limitations
+
+This project relies on publicly available global development indicators sourced from the World Bank.
+
+Due to data coverage limitations, certain countries are missing from the raw dataset. These include, but are not limited to:
+
+- **Africa**: Nigeria, Libya
+- **Asia**: Malaysia, Qatar, North Korea
+- **Europe**: Liechtenstein, Monaco
+- **Others**: Tuvalu, Vatican City, Palau
+
+These countries either lack recorded data for the selected indicators, have missing values across all years, or are aggregated under regional codes (e.g., ZH, ZF, XE).
+
+> ⚠️ This is a known limitation of global socioeconomic datasets. The analysis presented is based only on the available data.
+
+
 ## 🛡️ Disclaimer
 This project is for educational and demonstration purposes. The indicator data comes from public sources like data.worldbank.org.
