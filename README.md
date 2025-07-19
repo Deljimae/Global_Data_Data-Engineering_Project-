@@ -16,11 +16,13 @@ These indicators are sourced from the World Bank and other open data repositorie
 
 | Tool            | Role                                |
 |-----------------|--------------------------------------|
+|  **Python (World Bank API)**      |  Data Ingestion    |
 | **Kestra**      | Workflow orchestration               |
 | **AWS S3**      | Data lake (raw & processed data)     |
 | **AWS Athena**  | Serverless SQL querying              |
 | **Apache Iceberg** | Optimized table format for Athena |
 | **dbt**         | Data transformation and modeling     |
+| **Power BI**         |    Data Visualization              |
 | **Docker & EC2**| Infrastructure and environment setup |
 
 ---
