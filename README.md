@@ -158,7 +158,7 @@ This project is for educational and demonstration purposes. The indicator data c
 
 ## 👤 Author
 **Ayodeji Lana**  
-Computer Engineering Graduate | Data Engineering & Analytics Enthusiast  
+Computer Engineering Graduate | Data Engineering Enthusiast  
 🇳🇬 Nigeria  
 LinkedIn: www.linkedin.com/in/ayodeji-lana-17a342267
 
