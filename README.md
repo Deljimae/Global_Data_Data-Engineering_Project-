@@ -71,12 +71,14 @@ df.to_csv("data/raw/{indicator_name}.csv")
    - Line chart: Country trend across time
    - KPI cards: Max, Min, Average, Country Count
    - Slicers: `indicator_name`, `year`, `country_name`
+[View Page 2](screenshots/page2_compare_countries.png) 
 
 3. **Track an Indicator**  
    - Trend line chart: Country trend over years
    - Column chart: Year snapshot across countries
    - **Dynamic Titles via DAX**:  
      `"Compare Countries – " & SELECTEDVALUE(indicator_name) & " in " & SELECTEDVALUE(year)`
+[View Page 3](screenshots/page3_track_indicators.png) 
 
 
 ## 🐞 Data Quality Gaps
