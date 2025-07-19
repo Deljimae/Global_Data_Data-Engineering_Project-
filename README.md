@@ -25,6 +25,72 @@ These indicators are sourced from the World Bank and other open data repositorie
 
 ---
 
+
+## 🔄 ETL Pipeline
+### 1️⃣ Data Ingestion – Python Script
+Data fetched via World Bank API using:
+```python
+url = f"https://api.worldbank.org/v2/country/all/indicator/{indicator_code}?format=json&per_page=10000"
+response = requests.get(url)
+...
+df.to_csv("data/raw/{indicator_name}.csv")
+```
+
+### 2️⃣ Cloud Storage – AWS S3
+- **Bucket**: `s3://deljimae-kestra-bucket/raw/global_data/`
+- Uploads handled through Kestra orchestration flows
+
+### 3️⃣ Transformation – dbt
+- Created sources, staging, and models folders
+- Removed rows with:
+  - Null values
+  - Non-country region codes (e.g. `'ZF'`, `'ZH'`)
+- Generated final clean view: `vw_global_indicators_clean`
+- **dbt Tests**:
+  - `not_null`
+  - `accepted_values`
+  - Unique constraints
+- Validated year, value, and country consistency
+
+### 4️⃣ Data Warehouse – AWS Athena
+- Tables registered via Iceberg-compatible external tables
+- **Partitions**: by `year`
+- All transformations accessible via `vw_global_indicators_clean`
+
+## 📊 Power BI Dashboard
+### Dashboard Pages:
+1. **The Big Picture**  
+   - Map view by country
+   - KPI cards: Total indicators, country count, year range
+   - Line chart: Global average trend over years
+   - Slicers: `indicator_name`, `year`
+
+2. **Compare Countries**  
+   - Bar chart: Compare countries for selected metric
+   - Line chart: Country trend across time
+   - KPI cards: Max, Min, Average, Country Count
+   - Slicers: `indicator_name`, `year`, `country_name`
+
+3. **Track an Indicator**  
+   - Trend line chart: Country trend over years
+   - Column chart: Year snapshot across countries
+   - **Dynamic Titles via DAX**:  
+     `"Compare Countries – " & SELECTEDVALUE(indicator_name) & " in " & SELECTEDVALUE(year)`
+
+
+## 🐞 Data Quality Gaps
+- Several countries (e.g., Nigeria, Lebanon) missing in raw dataset
+- Filtered non-country codes:  
+  `'ZH'`, `'ZF'`, `'ZG'`, `'ZI'`, `'1A'`, `'V2'`, `'S3'`  
+
+## 🧠 Learning Outcomes
+- Using World Bank API programmatically
+- Automating ingestion with Kestra
+- Cleaning and testing data using dbt
+- Creating Athena Iceberg tables and views
+- Building dynamic, interactive Power BI dashboards
+- Structuring documentation and GitHub workflows
+
 ## 📂 Project Structure
 
 ```bash
@@ -84,3 +150,14 @@ These countries either lack recorded data for the selected indicators, have miss
 
 ## 🛡️ Disclaimer
 This project is for educational and demonstration purposes. The indicator data comes from public sources like data.worldbank.org.
+
+
+
+## 👤 Author
+**Ayodeji Lana**  
+Computer Engineering Graduate | Data Engineering & Analytics Enthusiast  
+🇳🇬 Nigeria  
+LinkedIn: www.linkedin.com/in/ayodeji-lana-17a342267
+
+*Tools: AWS, dbt, Power BI, Python, Kestra, Athena*  
+🚀 *Ready to transition into LLM Zoomcamp after completing this end-to-end analytics pipeline!*
