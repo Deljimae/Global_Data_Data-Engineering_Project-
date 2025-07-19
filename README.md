@@ -64,6 +64,7 @@ df.to_csv("data/raw/{indicator_name}.csv")
    - KPI cards: Total indicators, country count, year range
    - Line chart: Global average trend over years
    - Slicers: `indicator_name`, `year`
+[View Page 1](screenshots/page1_big_picture.png) 
 
 2. **Compare Countries**  
    - Bar chart: Compare countries for selected metric
