@@ -123,9 +123,43 @@ models:
 🚀 Run Job
 Materialize final view: vw_global_indicators_clean ✅
 
-``` yaml
+## ✅ Step 4: Connect Athena to Power BI via ODBC
+
+1. Download & install the Athena ODBC Driver
+
+### In Power BI:
+- Choose **ODBC** as data source  
+- Select your **Athena DSN**  
+- Navigate to your database and select `vw_global_indicators_clean`  
+- Import the table into Power BI and start visualizing  
 
 ---
 
-You can **copy and paste that block** directly into your GitHub `README.md` file, and it will render perfectly with syntax highlighting for SQL and YAML. Let me know if you'd like the heading emojis removed or styled differently.
-```
+## 📊 Dashboard Pages
+
+Inside Power BI (`Global_Indicators.pbix`), you’ll find:
+
+| Page                     | Description                                      |
+|--------------------------|--------------------------------------------------|
+| **Page 1: Big Picture**  | KPIs, map, global time trend                    |
+| **Page 2: Compare Countries** | Country bar chart + yearly trend line     |
+| **Page 3: Track an Indicator** | Line + column charts for a specific country and metric |
+
+---
+
+## 📁 Supporting Assets
+
+- `/assets/architecture.png`: Pipeline architecture  
+- `/docs/Global_Data_PowerPoint.pdf`: Final dashboard export  
+- `/screenshots/`: Dashboard views per page (optional)  
+
+---
+
+## 🧪 Troubleshooting
+
+| Issue                         | Fix                                                                 |
+|------------------------------|----------------------------------------------------------------------|
+| **ODBC not working**         | Confirm AWS credentials & region match Athena settings              |
+| **Missing countries in dashboard** | Check dbt transformation for filters and `NULL` handling      |
+| **Power BI visual interaction broken** | Use **“Edit Interactions”** under Visual Format options  |
+
