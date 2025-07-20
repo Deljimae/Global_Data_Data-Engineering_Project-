@@ -8,7 +8,7 @@ This project builds an end-to-end data engineering pipeline that ingests, transf
 - **Under-5 Mortality Rate**
 - **Renewable Energy Consumption**
 
-These indicators are sourced from the World Bank and other open data repositories to support insights on global human development and infrastructure gaps.
+These indicators are sourced from the World Bank to support insights on global human development and infrastructure gaps.
 
 ---
 
