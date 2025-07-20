@@ -1,0 +1,29 @@
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.env
+*.env
+
+# Power BI
+*.pbix
+
+# dbt
+dbt_modules/
+logs/
+target/
+dbt_packages/
+
+# Kestra / S3 temporary outputs
+*.log
+*.tmp
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# AWS credentials (if any)
+.aws/
